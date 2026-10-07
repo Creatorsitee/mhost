@@ -249,15 +249,7 @@ function DomainsContent() {
                   />
                 </div>
 
-                <div className="flex items-start gap-3 p-3.5 bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200/70 dark:border-amber-900/40 rounded-xl">
-                  <ShieldCheck size={16} className="text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                  <div className="flex-1 space-y-1">
-                    <div className="text-[11px] font-bold text-amber-900 dark:text-amber-300">Verifikasi DNS Real-Time Wajib</div>
-                    <div className="text-[11px] text-amber-800/90 dark:text-amber-400/90 leading-relaxed">
-                      Setelah menambahkan domain, sistem akan men-generate 5 record DNS unik (A, MX, SPF, DKIM RSA 2048-bit, dan DMARC). Anda wajib memasang kelima record tersebut pada DNS provider domain Anda agar pengiriman &amp; penerimaan email berfungsi secara real-time.
-                    </div>
-                  </div>
-                </div>
+
               </div>
 
               <div className="pt-2">
@@ -324,7 +316,7 @@ function DomainsContent() {
                   className="px-4 py-2.5 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-lg text-xs font-bold flex items-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50 shadow-sm flex-1 sm:flex-initial justify-center cursor-pointer"
                 >
                   <RefreshCw size={14} className={isVerifying ? 'animate-spin' : ''} />
-                  {isVerifying ? 'Memeriksa DNS...' : 'Verifikasi DNS Real-Time'}
+                  {isVerifying ? 'Memeriksa DNS...' : 'Verifikasi DNS'}
                 </button>
                 {isVerified && (
                   <button
@@ -344,7 +336,7 @@ function DomainsContent() {
               <div className="space-y-1 leading-relaxed">
                 <div className="font-bold">Konfigurasi DNS Diperlukan ({verifiedCount}/5 Terverifikasi)</div>
                 <p className="text-[11px] text-amber-800 dark:text-amber-400/90">
-                  Salin dan pasang kelima record DNS di bawah ini ke panel DNS domain Anda (Cloudflare, Namecheap, Route53, dll). Pastikan proxy Cloudflare dimatikan (<strong>DNS Only / Grey Cloud</strong>) pada record <code className="font-mono">mail</code>. Pembuatan mailbox dan pengiriman/penerimaan email real-time hanya aktif setelah 5/5 record terverifikasi.
+                  Salin dan pasang kelima record DNS di bawah ini ke panel DNS domain Anda (Cloudflare, Namecheap, Route53, dll). Pastikan proxy Cloudflare dimatikan (<strong>DNS Only / Grey Cloud</strong>) pada record <code className="font-mono">mail</code>. Pembuatan mailbox dan pengiriman/penerimaan email hanya aktif setelah 5/5 record terverifikasi.
                 </p>
               </div>
             </div>

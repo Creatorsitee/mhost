@@ -3,6 +3,8 @@ import { getDb, saveDb, addAuditLog } from '@/lib/db/db';
 import { getSession } from '@/lib/auth';
 import { verifyDomainDns } from '@/lib/dns/dns-service';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -50,7 +52,7 @@ export async function POST(
   await addAuditLog(
     'domain.verified',
     'domain',
-    `Real-time DNS verification for ${domain.name}: ${verifiedCount}/5 verified (A:${status.aRecord}, MX:${status.mx}, SPF:${status.spf}, DKIM:${status.dkim}, DMARC:${status.dmarc})`,
+    `DNS verification for ${domain.name}: ${verifiedCount}/5 verified (A:${status.aRecord}, MX:${status.mx}, SPF:${status.spf}, DKIM:${status.dkim}, DMARC:${status.dmarc})`,
     session.userId
   );
 

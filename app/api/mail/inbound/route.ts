@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 
 /**
  * Inbound Email Webhook & MIME Receiver API
- * Supports real-time incoming emails from Cloudflare Email Workers (raw MIME or JSON),
+ * Supports incoming emails from Cloudflare Email Workers (raw MIME or JSON),
  * SendGrid, Mailgun, Postmark, or custom SMTP forwarders.
  */
 export async function POST(req: NextRequest) {
@@ -121,7 +121,7 @@ export async function POST(req: NextRequest) {
         db.data.emails.push(incomingEmail);
         targetMailbox.storageUsed += (text.length || 0) + 1024;
         deliveredCount++;
-        await addAuditLog('email.inbound', 'email', `Inbound real-time email delivered to ${cleanAddress} from ${fromAddress}`);
+        await addAuditLog('email.inbound', 'email', `Inbound email delivered to ${cleanAddress} from ${fromAddress}`);
       }
     }
 

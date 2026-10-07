@@ -3,6 +3,8 @@ import { getDb, saveDb, EmailMessage, EmailFolder } from '@/lib/db/db';
 import { getSession } from '@/lib/auth';
 import { sendEmailWithFallback } from '@/lib/mail/mail-service';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   const session = await getSession();
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -192,7 +194,7 @@ export async function POST(req: NextRequest) {
 
   if (!senderDomain || senderDomain.status !== 'active' || verifiedCount < 5) {
     return NextResponse.json({
-      error: `Pengiriman diblokir: Domain ${senderDomain?.name || ''} belum aktif (${verifiedCount}/5 record DNS terverifikasi). Pasang dan verifikasi seluruh record DNS secara real-time terlebih dahulu.`
+      error: `Pengiriman diblokir: Domain ${senderDomain?.name || ''} belum aktif (${verifiedCount}/5 record DNS terverifikasi). Pasang dan verifikasi seluruh record DNS terlebih dahulu.`
     }, { status: 400 });
   }
 

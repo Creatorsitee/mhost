@@ -3,6 +3,8 @@ import { getDb, saveDb, addAuditLog, EmailMessage } from '@/lib/db/db';
 import { getSession } from '@/lib/auth';
 import bcrypt from 'bcryptjs';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   const session = await getSession();
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -72,7 +74,7 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // Enforce real-time DNS verification (5/5 records must be active)
+  // Enforce DNS verification (5/5 records must be active)
   const verifiedCount = [
     domain.dnsStatus?.aRecord,
     domain.dnsStatus?.mx,
@@ -83,7 +85,7 @@ export async function POST(req: NextRequest) {
 
   if (domain.status !== 'active' || verifiedCount < 5) {
     return NextResponse.json({
-      error: `Domain ${domain.name} belum aktif (${verifiedCount}/5 record DNS terverifikasi). Pasang dan verifikasi seluruh record DNS (A, MX, SPF, DKIM, DMARC) secara real-time terlebih dahulu agar email dapat berfungsi.`
+      error: `Domain ${domain.name} belum aktif (${verifiedCount}/5 record DNS terverifikasi). Pasang dan verifikasi seluruh record DNS (A, MX, SPF, DKIM, DMARC) terlebih dahulu agar email dapat berfungsi.`
     }, { status: 400 });
   }
 

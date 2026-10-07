@@ -3,6 +3,8 @@ import { getDb, saveDb, addAuditLog, initializeSystem } from '@/lib/db/db';
 import { getSession } from '@/lib/auth';
 import { generateDkimKeys, verifyDomainDns } from '@/lib/dns/dns-service';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   const session = await getSession();
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

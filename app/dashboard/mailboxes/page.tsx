@@ -310,7 +310,7 @@ function MailboxesContent() {
                         <span>Domain {selectedDomainObj.name} Belum Terverifikasi DNS</span>
                       </div>
                       <p className="text-[11px] leading-relaxed">
-                        Email tidak akan berfungsi untuk mengirim maupun menerima pesan secara real-time sebelum ke-5 record DNS (A, MX, SPF, DKIM, DMARC) terpasang dan terverifikasi.
+                        Email tidak akan berfungsi untuk mengirim maupun menerima pesan sebelum ke-5 record DNS (A, MX, SPF, DKIM, DMARC) terpasang dan terverifikasi.
                       </p>
                       <Link
                         href={`/dashboard/domains?domainId=${selectedDomainObj.id}`}

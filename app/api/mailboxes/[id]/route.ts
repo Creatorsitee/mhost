@@ -3,6 +3,8 @@ import { getDb, saveDb, addAuditLog } from '@/lib/db/db';
 import { getSession } from '@/lib/auth';
 import bcrypt from 'bcryptjs';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }

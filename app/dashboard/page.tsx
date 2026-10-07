@@ -66,7 +66,7 @@ export default function DashboardPage() {
         if (isMounted) setIsLoading(false);
       });
 
-    // Real-time automatic polling every 4 seconds to reflect actual database state
+    // Automatic polling every 4 seconds to reflect actual database state
     const interval = setInterval(() => {
       authFetch('/api/stats')
         .then(res => res.json())

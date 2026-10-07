@@ -75,7 +75,7 @@ export async function sendEmailWithFallback(params: SendMailParams): Promise<{ s
 
   if (externalRecipients.length === 0) {
     await saveDb();
-    return { success: true, externalSent: false, messageId, note: `Email terkirim secara real-time ke ${internalDeliveredCount} penerima.` };
+    return { success: true, externalSent: false, messageId, note: `Email terkirim ke ${internalDeliveredCount} penerima.` };
   }
 
   let externalSent = false;
@@ -186,7 +186,7 @@ export async function sendEmailWithFallback(params: SendMailParams): Promise<{ s
     externalSent,
     messageId,
     note: externalSent 
-      ? 'Email berhasil dikirim secara real-time.' 
+      ? 'Email berhasil dikirim.' 
       : internalDeliveredCount > 0 
         ? `Terkirim ke ${internalDeliveredCount} mailbox internal.` 
         : `Disimpan di folder Outbox (Pengiriman tertunda: ${externalError}).`

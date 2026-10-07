@@ -103,7 +103,7 @@ export const startInternalSmtpServer = () => {
               const attachmentBytes = attachments.reduce((sum, a) => sum + a.size, 0);
               mailbox.storageUsed += (parsed.text?.length || 0) + attachmentBytes + 1024;
               await saveDb();
-              await addAuditLog('email.received', 'email', `Received real-time SMTP message for ${address} from ${newEmail.from.address}`);
+              await addAuditLog('email.received', 'email', `Received SMTP message for ${address} from ${newEmail.from.address}`);
             }
           } catch (e) {
             console.error('Error storing received email:', e);

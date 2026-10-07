@@ -140,7 +140,7 @@ function WebmailContent() {
       if (isMounted) fetchEmails();
     }, 0);
 
-    // Real-time automatic polling every 4 seconds to receive incoming emails live
+    // Automatic polling every 4 seconds to receive incoming emails live
     const interval = setInterval(() => {
       if (isMounted) fetchEmails(true);
     }, 4000);
@@ -489,7 +489,7 @@ function WebmailContent() {
             <div className="p-10 text-center space-y-2">
               <Mail size={24} className="mx-auto text-neutral-300 dark:text-neutral-700" />
               <p className="text-xs font-bold text-neutral-600 dark:text-neutral-400 capitalize">No messages in {activeFolder}</p>
-              <p className="text-[11px] text-neutral-400">Incoming messages will show up in real-time.</p>
+              <p className="text-[11px] text-neutral-400">Incoming messages will appear here automatically.</p>
             </div>
           ) : (
             emails.map((email) => {
